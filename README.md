@@ -42,13 +42,7 @@
 
   Sessions
   ```python
-  SESSION_ENGINE = [
-      'django.contrib.sessions.backends.db',
-      'django.contrib.sessions.backends.file',
-      'django.contrib.sessions.backends.cache',
-      'django.contrib.sessions.backends.cached_db',
-      'django.contrib.sessions.backends.signed_cookies'
-  ]
+  SESSION_ENGINE = "django.contrib.sessions.backends.file"
   ```
 
-  
+3. 

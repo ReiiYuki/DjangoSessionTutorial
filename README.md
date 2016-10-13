@@ -13,3 +13,15 @@
   ```
   pip install psycopg2
   ```
+
+## Let's Start !!!
+
+1. Start Project
+
+  ```
+  django-admin startproject sessiontutorial
+  ```
+
+2. Edit database setting
+
+  `sessiontutorial/setting`

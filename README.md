@@ -22,6 +22,33 @@
   django-admin startproject sessiontutorial
   ```
 
-2. Edit database setting
+2. Edit settings
 
-  `sessiontutorial/setting`
+  `sessiontutorial/settings.py`
+
+  Database
+  ```python
+  DATABASES = {
+      'default': {
+          'ENGINE': 'django.db.backends.postgresql',
+          'NAME': 'session-tutorial',
+          'USER' : 'postgres',
+          'PASSWORD' : 'root1234',
+          'HOST' : 'localhost',
+          'PORT' : '5432'
+      }
+  }
+  ```
+
+  Sessions
+  ```python
+  SESSION_ENGINE = [
+      'django.contrib.sessions.backends.db',
+      'django.contrib.sessions.backends.file',
+      'django.contrib.sessions.backends.cache',
+      'django.contrib.sessions.backends.cached_db',
+      'django.contrib.sessions.backends.signed_cookies'
+  ]
+  ```
+
+  

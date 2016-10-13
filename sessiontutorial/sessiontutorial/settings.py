@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'sessiontutorial.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'session-tutorial',
+        'USER' : 'postgres',
+        'PASSWORD' : 'root1234',
+        'HOST' : 'localhost',
+        'PORT' : '5432'
     }
 }
 
@@ -118,3 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SESSION_ENGINE = [
+    'django.contrib.sessions.backends.db',
+    'django.contrib.sessions.backends.file',
+    'django.contrib.sessions.backends.cache',
+    'django.contrib.sessions.backends.cached_db',
+    'django.contrib.sessions.backends.signed_cookies'
+]

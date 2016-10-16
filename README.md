@@ -108,3 +108,60 @@ pip install psycopg2
   python manage.py makemigrations user
   python manage.py migrate
   ```
+
+5. Create Register Form
+
+  Create `user/templates/index.html` for hold the Form
+
+  ```html
+  <!Doctype html>
+  <html>
+    <header>
+      <meta charset="utf-8">
+      <title>Register Form</title>
+    </header>
+    <body>
+      <form method = "post">
+        Username :
+        <input type="text" placeholder="Input your Username" name ="username">
+
+        <br>
+
+        Password :
+        <input type="password" placeholder="Input your Password" name="password">
+
+        <br>
+
+        Email :
+        <input type="email" placeholder="Input your Email" name="email">
+
+        <br>
+
+        <input type="submit" value="Confirm">
+      </form>
+    </body>
+  </html>
+  ```
+
+  Edit `user/views.py` for render the register form
+
+  ```python
+  def register_view(request) :
+      return render(request,'register.html')
+  ```
+
+  Edit `user/urls.py` for link url to view
+
+  ```python
+  urlpatterns = [
+      url(r'^register$',views.register_view),
+  ]
+  ```
+
+  In your bash
+  ```
+  python manage.py runserver
+  ```
+
+  Now if you go to `localhost:8000/register` you should see the register form  
+  

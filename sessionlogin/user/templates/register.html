@@ -5,7 +5,8 @@
     <title>Register Form</title>
   </header>
   <body>
-    <form method = "post">
+    <form action="{% url 'user:register' %}" method = "post">
+      {% csrf_token %}
       Username :
       <input type="text" placeholder="Input your Username" name ="username">
 

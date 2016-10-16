@@ -97,7 +97,7 @@ pip install psycopg2
       firstName= models.CharField(max_length=50)
       lastName = models.CharField(max_length=50)
       email = models.EmailField(max_length=100)
-      dateOfBirth = models.DateField()
+      dateOfBirth = models.DateField(null=True,blank=True)
       favouriteColor = models.CharField(max_length=20)
       class Meta :
           db_table = 'user'
@@ -164,4 +164,35 @@ pip install psycopg2
   ```
 
   Now if you go to `localhost:8000/register` you should see the register form  
-  
+
+6. Make the form available to register
+
+  Edit `user/views.py` to have to function to register
+  ```python
+  from django.http import HttpResponseRedirect
+  from django.urls import reverse
+  from .models import User
+  def register(request) :
+      username = request.POST['username']
+      password = request.POST['password']
+      email = request.POST['email']
+      user = User(username=username,password=password,email=email)
+      user.save()
+      return HttpResponseRedirect(reverse('user:register_view'))
+  ```
+
+  Edit `user/urls.py` to have url that link to register   
+  ```python
+  app_name = 'user'
+
+  urlpatterns = [
+      url(r'^register$',views.register_view,name="register_view"),
+      url(r'^reg$',views.register,name="register"),
+  ]
+  ```
+
+  Edit `user/templates/register.html`
+  ```html
+  <form action="{% url 'user:register' %}" method = "post">
+    {% csrf_token %}
+  ```

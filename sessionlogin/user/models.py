@@ -7,7 +7,7 @@ class User(models.Model) :
     firstName= models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
-    dateOfBirth = models.DateField()
+    dateOfBirth = models.DateField(null=True,blank=True)
     favouriteColor = models.CharField(max_length=20)
     class Meta :
         db_table = 'user'

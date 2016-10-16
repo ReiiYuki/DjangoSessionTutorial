@@ -196,3 +196,60 @@ pip install psycopg2
   <form action="{% url 'user:register' %}" method = "post">
     {% csrf_token %}
   ```
+
+  In your bash  runserver
+  ```
+  python manage.py runserver
+  ```
+
+  Try to register your user and look at your database, make sure you have your user in database
+
+7. Create Login form
+
+  Create `user/templates/index.html` for serving login page
+  ```html
+  <!Doctype html>
+  <html>
+    <header>
+      <meta charset="utf-8">
+      <title>Login Form</title>
+    </header>
+    <body>
+      <form method = "post">
+        Username :
+        <input type="text" placeholder="Input your Username" name ="username">
+
+        <br>
+
+        Password :
+        <input type="password" placeholder="Input your Password" name="password">
+
+        <br>
+
+        <input type="submit" name="action" value="Login">
+        <input type="submit" name="action" value="Register">
+      </form>
+    </body>
+  </html>
+  ```
+
+  Edit `user/views.py` to have method for serving login form  
+  ```python
+  def login_view(request) :
+      return render(request,'index.html')
+  ```
+
+  Edit `user/urls.py` to make url that connect to login form  
+  ```python   
+  urlpatterns = [
+      url(r'$',views.login_view,name="index"),
+  ```
+
+  In your bash runserver  
+  `python manage.py runserver`
+
+  Now go to `localhost:8000` you will see the login form  
+
+8. Make the login form active
+
+  

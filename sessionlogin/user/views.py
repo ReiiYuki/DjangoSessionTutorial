@@ -13,3 +13,6 @@ def register(request) :
     user = User(username=username,password=password,email=email)
     user.save()
     return HttpResponseRedirect(reverse('user:register_view'))
+
+def login_view(request) :
+    return render(request,'index.html')

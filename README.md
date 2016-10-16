@@ -37,3 +37,51 @@ pip install psycopg2
   }
   ```
   *** Make sure you  have database name `session` in your database server.
+
+  In your bash
+  ```
+  python manage.py migrate
+  ```
+
+  Now basic table of Django are in your database
+
+3. Initialize user app for Login
+
+  In your bash
+  ```
+  python manage.py startapp user
+  ```
+
+  Connect your app to project setting by edit `sessionlogin/settings.py`
+
+  ```python
+  INSTALLED_APPS = [
+      'user.apps.UserConfig',
+      ....,
+      ....,
+  ]
+  ```
+
+  Link URL of project to app by
+
+  Create `user/urls.py`
+
+  ```python
+  from django.conf.urls import url
+  from . import views
+
+  urlpatterns = [
+
+  ]
+  ```
+
+  Edit `sessionlogin/urls.py`
+  ```python
+  from django.conf.urls import url,include
+  from django.contrib import admin
+
+  urlpatterns = [
+      url(r'^',include('user.urls')),
+      url(r'^admin/', admin.site.urls),
+  ]
+  ```

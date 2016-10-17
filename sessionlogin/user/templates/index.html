@@ -5,7 +5,9 @@
     <title>Login Form</title>
   </header>
   <body>
-    <form method = "post">
+    <form action={% url 'user:login' %} method = "post">
+      {% csrf_token %}
+      
       Username :
       <input type="text" placeholder="Input your Username" name ="username">
 

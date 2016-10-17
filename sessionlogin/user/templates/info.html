@@ -1,0 +1,36 @@
+<!Doctype html>
+<html>
+  <header>
+    <meta charset="utf-8">
+    <title>Login Form</title>
+  </header>
+  <body>
+    <h1>Welcome, {{ user.username }}</h1>
+    <form action='{% url 'user:edit' %}' method = "post">
+      {% csrf_token %}
+      <input type="submit" name="action" value="Logout">
+
+      <br>
+      First Name :
+      <input type="text" name ="firstName" value="{{ user.firstName }}">
+
+      <br>
+
+      Last Name :
+      <input type="text" name="lastName" value="{{ user.lastName }}">
+
+      <br>
+
+      E-mail :
+      <input type="text" name="email" value="{{ user.email }}">
+
+      <br>
+
+      Date of Birth :
+      <input type="date" name="dateOfBirth" value="{{ user.dateOfBirth }}">
+
+      <br>
+      <input type="submit" name="action" value="Submit">
+    </form>
+  </body>
+</html>
